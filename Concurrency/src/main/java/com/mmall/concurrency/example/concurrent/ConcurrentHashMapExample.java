@@ -10,9 +10,14 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Semaphore;
 
+/**
+ * jdk8采用cas 和synchronized关键字来实现
+ * jdk7 采用分段锁
+ */
 @Slf4j
 @ThreadSafe
-public class ConcurrentHashMapExample {
+public  class ConcurrentHashMapExample {
+
 
     // 请求总数
     public static int clientTotal = 5000;
@@ -20,7 +25,7 @@ public class ConcurrentHashMapExample {
     // 同时并发执行的线程数
     public static int threadTotal = 200;
 
-    private static Map<Integer, Integer> map = new ConcurrentHashMap<>();
+    private static ConcurrentHashMap<Integer, Integer> map = new ConcurrentHashMap<>();
 
     public static void main(String[] args) throws Exception {
         ExecutorService executorService = Executors.newCachedThreadPool();

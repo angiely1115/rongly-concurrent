@@ -80,6 +80,7 @@ public class VectorExample3 {
         while (iterator.hasNext()) {
             Integer i = iterator.next();
             if (i.equals(1)) {
+                //此方法类 expectedModCount = modCount; 有重新赋值
                 iterator.remove();
             }
         }
